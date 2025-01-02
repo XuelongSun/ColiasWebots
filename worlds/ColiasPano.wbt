@@ -14,8 +14,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.13423442158328142 0.2516602145034793 0.9584614006303356 1.0156795528827154
-  position -0.1922942824934191 -0.27616097740054824 0.11452716698928594
+  orientation -0.0840368327785987 0.017702123329704417 0.9963053977401517 2.7278929678113055
+  position 0.31620941040025474 -0.040026603264391156 0.09993836573057555
 }
 TexturedBackground {
 }
@@ -24,10 +24,72 @@ TexturedBackgroundLight {
 RectangleArena {
 }
 Robot {
-  translation 1.0226558217299549e-10 0.02176802042528642 -3.9414166215076193e-05
-  rotation -0.9999999999995993 1.9830127272864575e-07 -8.729980570665704e-07 0.008082671428900451
+  translation 0.03042719520644083 0.09472089788583447 -3.796361276515309e-05
+  rotation -0.0035613941732294332 0.004041675427823353 -0.9999854905603777 1.6970180148754157
   children [
-    Transform {
+    DEF ModelPanoCamera Transform {
+      translation 0 0 -0.003
+      children [
+        DEF kogeto Transform {
+          children [
+            DEF len Transform {
+              translation 0 0 0.046
+              rotation 0.5773522691882489 0.5773502691873165 0.5773482691863839 2.0944
+              children [
+                CadShape {
+                  url [
+                    "../3D-models/kogeto-p2.obj"
+                  ]
+                  castShadows FALSE
+                }
+              ]
+            }
+            DEF b Transform {
+              translation 0 0 0.042
+              children [
+                Shape {
+                  appearance PBRAppearance {
+                    baseColor 0 0 0
+                    roughness 0.7
+                    metalness 0
+                  }
+                  geometry Cylinder {
+                    height 0.008
+                    radius 0.017
+                  }
+                }
+              ]
+            }
+            DEF t Transform {
+              translation 0 0 0.06
+              children [
+                Shape {
+                  appearance PBRAppearance {
+                    baseColor 0 0 0
+                    roughness 0.7
+                    metalness 0
+                  }
+                  geometry Cylinder {
+                    height 0.001
+                    radius 0.012
+                  }
+                }
+              ]
+            }
+          ]
+        }
+        DEF CamHolder Transform {
+          translation 0 0 0.034
+          rotation 3.3905113482557537e-09 0.70710528118436 0.707108281185553 3.14159
+          children [
+            CadShape {
+              url [
+                "../3D-models/PanoColiasOldHolder.obj"
+              ]
+            }
+          ]
+        }
+      ]
     }
     DEF Copper Transform {
       children [
@@ -103,7 +165,7 @@ Robot {
     }
     DEF Right HingeJoint {
       jointParameters HingeJointParameters {
-        position 28.095999896503674
+        position 33.34400003329697
         axis -1 0 0
         anchor 0.024 -0.003 0.01
       }
@@ -113,8 +175,8 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation 1.3877787807814457e-17 -0.007726324059403796 0.019309235247081294
-        rotation -1 0 0 2.963258667785328
+        translation 1.3877787807814457e-17 -0.013417699288044094 0.010686688826096375
+        rotation 1 0 0 4.3551118097805475
         children [
           DEF RightWheel Transform {
             translation 0.022 -0.003 0.01
@@ -144,13 +206,13 @@ Robot {
         }
         physics Physics {
         }
-        linearVelocity 1.0598909492179017e-10 0.01999964686506734 1.1260548869726716e-05
-        angularVelocity -2.000000890527364 1.4557655302869102e-08 5.031796310621672e-10
+        linearVelocity 0.0003949868794280232 -3.817718841502433e-05 -2.0942684773002193e-09
+        angularVelocity 8.68923852785755e-08 -3.50092124128079e-08 -0.40009810514321753
       }
     }
     DEF Left HingeJoint {
       jointParameters HingeJointParameters {
-        position 28.09599989646472
+        position 165.31094048661515
         axis -1 0 0
         anchor -0.024 -0.003 0.01
       }
@@ -160,8 +222,8 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation -6.938893903907228e-18 -0.0077263240597657094 0.019309235246897562
-        rotation -1 0 0 2.9632586677463726
+        translation -4.163336342344337e-17 -0.01340183909222593 0.010895401306365241
+        rotation -1 0 0 1.9481224999459037
         children [
           DEF LeftWheel Transform {
             translation -0.026 -0.003 0.01
@@ -192,11 +254,11 @@ Robot {
         }
         physics Physics {
         }
-        linearVelocity 1.0598972872587e-10 0.019999646950934806 1.1260572677166011e-05
-        angularVelocity -2.0000008905291304 1.455692225166284e-08 5.037689365748447e-10
+        linearVelocity 0.01946938963455936 -0.0023356191742566388 1.796198731284753e-09
+        angularVelocity 0.23786220698571342 1.9858389375723284 -0.403816044608978
       }
     }
-    Transform {
+    DEF ModelMotorR Transform {
       children [
         Transform {
           translation 0 -0.0031 0.0098
@@ -211,7 +273,7 @@ Robot {
         }
       ]
     }
-    Transform {
+    DEF ModelMotorL Transform {
       rotation 0 1 0 3.14159
       children [
         Transform {
@@ -230,25 +292,14 @@ Robot {
     DEF SenseBoard Transform {
       translation 0 0 0.0061
       children [
-        Transform {
-          translation 0 0 0.0188
-          rotation 0 0 1 3.14159
-          scale 0.01 0.01 0.01
-          children [
-            CadShape {
-              url [
-                "../3D-models/colias_camera.obj"
-              ]
-            }
-          ]
-        }
         Camera {
-          translation 0 0.0133 0.0096
-          rotation 0 0 1 1.5708
+          translation 0 0 0.0384
+          rotation -0.5773509358554485 0.5773489358556708 -0.5773509358554485 -2.094395307179586
+          fieldOfView 3.14
+          projection "spherical"
+          near 0.02
         }
-        Transform {
-        }
-        Transform {
+        DEF PCB Transform {
           translation 0 0 0.02
           children [
             CadShape {
@@ -285,6 +336,6 @@ Robot {
   physics Physics {
   }
   controller "Colias"
-  linearVelocity 1.1061468627564588e-10 0.019999651023043775 1.1256859235861278e-05
-  angularVelocity -8.977681216302554e-07 5.058190030816988e-10 -2.628723751879671e-09
+  linearVelocity 0.009787082008304216 -0.002392507407047783 -7.765224143395244e-11
+  angularVelocity 7.868004254729609e-08 -3.4473167004041986e-08 -0.400098105445212
 }

@@ -17,7 +17,7 @@ class Colias(Robot):
         self.motor_left.setPosition(float('inf'))
         self.motor_right.setPosition(float('inf'))
         self.motor_left.setVelocity(2)
-        self.motor_right.setVelocity(2)
+        self.motor_right.setVelocity(0)
         while self.step(self.time_step) != -1:
             pass
     
